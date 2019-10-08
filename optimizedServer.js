@@ -30,21 +30,16 @@ io.on('connection', function(socket) {
     socket.on("disconnect",function() {
       io.emit("masterdisconnect");
     });
-    console.log("Master is " + socket.id);
     socket.emit("master");
   }
   else {
     socket.on("disconnect",function() {
-      console.log("Clients: " + Object.keys(io.sockets.connected).length);
       io.emit("clients",Object.keys(io.sockets.connected).length);      
     });
     socket.emit("updatePos", masterPos + masterLat);
-    socket.emit("notmaster");
-    console.log("NotMaster is " + socket.id);
     if(playing)
       socket.emit("play");
   }
-  console.log("Clients: " + Object.keys(io.sockets.connected).length);
   io.emit("clients",Object.keys(io.sockets.connected).length);
 });
 console.log("Listening on port 8080");
