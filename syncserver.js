@@ -39,7 +39,7 @@ io.on('connection', function(socket) {
     });
     socket.on("pos", function(pos) {
       users[socket.id].pos = pos;
-      if(Math.abs((pos + users[socket.id].lat) - (masterPos + masterLat)) > .15) {
+      if(Math.abs((pos + users[socket.id].lat) - (masterPos + masterLat)) > .10) {
         socket.emit("updatePos", masterPos + users[socket.id].lat + masterLat);
         console.log("Syncing to " + (masterPos + users[socket.id].lat + masterLat) + " MasterPos: " + masterPos);
       }
