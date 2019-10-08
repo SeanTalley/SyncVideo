@@ -36,7 +36,7 @@ io.on('connection', function(socket) {
     socket.on("disconnect",function() {
       io.emit("clients",Object.keys(io.sockets.connected).length);      
     });
-    socket.emit("updatePos", masterPos + masterLat);
+    socket.emit("updatePos", masterPos);
     if(playing)
       socket.emit("play");
   }
