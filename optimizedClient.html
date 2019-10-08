@@ -84,6 +84,7 @@
       document.addEventListener("click", mustClickFirst);
       function mustClickFirst() {
         document.removeEventListener("click", mustClickFirst);
+        $("mos").innerHTML = "Master: false";
         var latency = 0;
         var socket = io();
         $("c1").style.display = "none";
@@ -116,9 +117,6 @@
         });
         socket.on('clients', function (c) {
           $("clients").innerHTML = "Clients: " + c;
-        });
-        socket.on('notmaster', function () {
-          $("mos").innerHTML = "Master: false";
         });
         socket.on('pause', function () {
           vid.pause();
