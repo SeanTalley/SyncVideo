@@ -28,7 +28,7 @@ io.on('connection', function(socket) {
       playing = false;
     });
     socket.on("disconnect",function() {
-      io.emit("masterdisconnect");
+      io.emit("masterdisconnect"); //Add some graceful "Stream ended" code
     });
     socket.emit("master");
   }
