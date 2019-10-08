@@ -98,8 +98,7 @@
           $("lat").innerHTML = "Latency: " + ms + "ms";
         });
         socket.on('updatePos', function (pos) {
-          //How tight are we syncing? 1/10th of a second.
-          //If we sync too tight, it can get stuttery depending on video load times.
+          //How tight are we syncing?
           if(Math.abs((vid.currentTime + latency) - pos) > .10)
             vid.currentTime = pos;
         });
